@@ -1,9 +1,9 @@
 /*
  * @Author : Akko
  * @Date : 2020-06-14 12:49:21
- * @LastEditTime : 2020-06-14 13:11:07
+ * @LastEditTime : 2020-06-14 15:32:38
  * @LastEditors : Akko
- * @Description : ÕÒ³öÒ»¸öÕûĞÍÊı×éÖĞµÄÔªËØµÄ×î´óÖµ£¬²¢¶ÔÊı×é½øĞĞÅÅĞò¡£
+ * @Description : æ‰¾å‡ºä¸€ä¸ªæ•´å‹æ•°ç»„ä¸­çš„å…ƒç´ çš„æœ€å¤§å€¼ï¼Œå¹¶å¯¹æ•°ç»„è¿›è¡Œæ’åºã€‚
  * @FilePath : \object-oriented analysis and design\Lab1\ClassAndObject.cpp
  * @Copyright  ? 2020 Akko All rights reserved.
 */
@@ -13,32 +13,32 @@ using namespace std;
 #define MAXSIZE 50
 /*
 class -- Array
-(1)Êı¾İ³ÉÔ±°üº¬£º
-    Á½¸öÊı×é£¬Ò»¸öÓÃÓÚ±£´æÔ­Ê¼Êı¾İ£¬ÁíÒ»¸öÔòÓÃÓÚ±£´æÓĞĞòµÄÊı¾İ£¨µİÔö»òµİ¼õ×Ô¶¨£©;
-    Ò»¸öÓÃÓÚ´æ·Å×î´óÖµµÄÊı¾İ³ÉÔ±;Ò»¸öÓÃÓÚ´æ·Å×î´óÖµËùÔÚÊı×éÖĞµÄÎ»ÖÃµÄÊı¾İ³ÉÔ±;
-(2)³ÉÔ±º¯Êı£º
-    Ò»¸öÓÃÓÚÇó×î´óÖµºÍ¼°ÆäÔÚÊı×éÖĞµÄÎ»ÖÃ;
-    ÁíÒ»¸öÓÃÓÚÅÅĞò£¬ÅÅĞò·½·¨²»¶¨£¨¿ÉÒÔÓÃÊı¾İ½á¹¹Àï½²µÄÎå´óÀàÅÅĞò·½·¨µÄÒ»ÖÖ£©;
-    ×îºóÒ»¸öÓÃÓÚ½á¹ûµÄÊä³ö;
-(3)¶¨Òå¹¹Ôìº¯ÊıÍê³É³õÊ¼»¯¹¤×÷£¬ÔÊĞíÓÃ»§¶¨Òå¶ÔÏóÊ±¸ø¶ÔÏó¸³³õÖµ£¬¶¨ÒåÎö¹¹º¯Êı;
-(4)¶¨Òå¶ÔÏó£¬Í¨¹ı¶ÔÏóÍê³ÉËùÓĞ²Ù×÷.
+(1)æ•°æ®æˆå‘˜åŒ…å«ï¼š
+    ä¸¤ä¸ªæ•°ç»„ï¼Œä¸€ä¸ªç”¨äºä¿å­˜åŸå§‹æ•°æ®ï¼Œå¦ä¸€ä¸ªåˆ™ç”¨äºä¿å­˜æœ‰åºçš„æ•°æ®ï¼ˆé€’å¢æˆ–é€’å‡è‡ªå®šï¼‰;
+    ä¸€ä¸ªç”¨äºå­˜æ”¾æœ€å¤§å€¼çš„æ•°æ®æˆå‘˜;ä¸€ä¸ªç”¨äºå­˜æ”¾æœ€å¤§å€¼æ‰€åœ¨æ•°ç»„ä¸­çš„ä½ç½®çš„æ•°æ®æˆå‘˜;
+(2)æˆå‘˜å‡½æ•°ï¼š
+    ä¸€ä¸ªç”¨äºæ±‚æœ€å¤§å€¼å’ŒåŠå…¶åœ¨æ•°ç»„ä¸­çš„ä½ç½®;
+    å¦ä¸€ä¸ªç”¨äºæ’åºï¼Œæ’åºæ–¹æ³•ä¸å®šï¼ˆå¯ä»¥ç”¨æ•°æ®ç»“æ„é‡Œè®²çš„äº”å¤§ç±»æ’åºæ–¹æ³•çš„ä¸€ç§ï¼‰;
+    æœ€åä¸€ä¸ªç”¨äºç»“æœçš„è¾“å‡º;
+(3)å®šä¹‰æ„é€ å‡½æ•°å®Œæˆåˆå§‹åŒ–å·¥ä½œï¼Œå…è®¸ç”¨æˆ·å®šä¹‰å¯¹è±¡æ—¶ç»™å¯¹è±¡èµ‹åˆå€¼ï¼Œå®šä¹‰ææ„å‡½æ•°;
+(4)å®šä¹‰å¯¹è±¡ï¼Œé€šè¿‡å¯¹è±¡å®Œæˆæ‰€æœ‰æ“ä½œ.
 */
 class Array
 {
 private:
-    int OriginalArray[MAXSIZE]; //Ô­Ê¼Êı×é:±£´æÔ­Ê¼Êı¾İ
-    int OrderedArray[MAXSIZE];  //ÓĞĞòÊı×é:±£´æÓĞĞòÊı¾İ
-    int ArrayMax;               //Êı×é×î´óÖµ
-    int ArrayMaxLocation;       //×î´óÖµµÄÎ»ÖÃ
-    int ArrayLength;            //Êı×éµÄ³¤¶È
+    int OriginalArray[MAXSIZE]; //åŸå§‹æ•°ç»„:ä¿å­˜åŸå§‹æ•°æ®
+    int OrderedArray[MAXSIZE];  //æœ‰åºæ•°ç»„:ä¿å­˜æœ‰åºæ•°æ®
+    int ArrayMax;               //æ•°ç»„æœ€å¤§å€¼
+    int ArrayMaxLocation;       //æœ€å¤§å€¼çš„ä½ç½®
+    int ArrayLength;            //æ•°ç»„çš„é•¿åº¦
 public:
-    Array(){};             //¹¹Ôìº¯Êı:ÎŞ²Î
-    Array(int a[]);        //¹¹Ôìº¯Êı:×Ô¶¨Òå
-    int *ArrayIn();        //Ô­Ê¼Êı¾İÊäÈë
-    void PickMax(int a[]); //Çó×î´óÖµ¼°ÆäËùÔÚÎ»ÖÃ
-    void Rank(int a[]);    //Ã°Åİ·¨ÅÅĞò
-    void ArrayOut();       //½á¹ûÊä³ö
-    ~Array() {}            //Îö¹¹º¯Êı
+    Array(){};             //æ„é€ å‡½æ•°:æ— å‚
+    Array(int a[]);        //æ„é€ å‡½æ•°:è‡ªå®šä¹‰
+    int *ArrayIn();        //åŸå§‹æ•°æ®è¾“å…¥
+    void PickMax(int a[]); //æ±‚æœ€å¤§å€¼åŠå…¶æ‰€åœ¨ä½ç½®
+    void Rank(int a[]);    //å†’æ³¡æ³•æ’åº
+    void ArrayOut();       //ç»“æœè¾“å‡º
+    ~Array() {}            //ææ„å‡½æ•°
 };
 /* class -- Array*/
 
@@ -46,18 +46,18 @@ public:
 Type:None
 Name:Array()
 Parameter:int
-Summary:ÓÃ¹¹Ôìº¯Êı¸³Öµ
+Summary:ç”¨æ„é€ å‡½æ•°èµ‹å€¼
 Return:None
 */
 Array::Array(int a[])
 {
     int i;
-    cout << "¡ª¡ªÓÉÓÃ»§¶¨Òå¶ÔÏóÊ±¸³Öµ¡ª¡ª" << endl;
+    cout << "â€”â€”ç”±ç”¨æˆ·å®šä¹‰å¯¹è±¡æ—¶èµ‹å€¼â€”â€”" << endl;
     for (i = 0; i < MAXSIZE; i++)
     {
         OriginalArray[i] = a[i];
         if (a[i] == -999)
-            break; //Êı×éÒÔ-999½áÊø
+            break; //æ•°ç»„ä»¥-999ç»“æŸ
     }
     ArrayLength = i;
 }
@@ -65,14 +65,14 @@ Array::Array(int a[])
 Type:int
 Name:ArrayIn()
 Parameter:None
-Summary:ÓÃ³ÉÔ±º¯Êı¸³Öµ
+Summary:ç”¨æˆå‘˜å‡½æ•°èµ‹å€¼
 Return:OriginalArray
 */
 int *Array::ArrayIn()
 {
-    cout << "¡ª¡ªÓÉ³ÉÔ±º¯Êı¶¯Ì¬¸³Öµ¡ª¡ª" << endl;
+    cout << "â€”â€”ç”±æˆå‘˜å‡½æ•°åŠ¨æ€èµ‹å€¼â€”â€”" << endl;
     int a, i;
-    cout << "ÇëÊäÈëÒ»×éÊı¾İ£¬ÓÉ-999½áÊø£º" << endl;
+    cout << "è¯·è¾“å…¥ä¸€ç»„æ•°æ®ï¼Œç”±-999ç»“æŸï¼š" << endl;
     for (i = 0; i <= 50; i++)
     {
         cin >> a;
@@ -88,7 +88,7 @@ int *Array::ArrayIn()
 Type:void
 Name:PickMax()
 Parameter:int
-Summary:Ñ¡³ö×î´óÖµ
+Summary:é€‰å‡ºæœ€å¤§å€¼
 Return:None
 */
 void Array::PickMax(int OriginalArray[])
@@ -109,7 +109,7 @@ void Array::PickMax(int OriginalArray[])
 Type:void
 Name:Rank()
 Parameter:int
-Summary:ÅÅĞò
+Summary:æ’åº
 Return:None
 */
 void Array::Rank(int OriginalArray[])
@@ -134,21 +134,21 @@ void Array::Rank(int OriginalArray[])
 Type:void
 Name:ArrayOut
 Parameter:None
-Summary:Êä³ö½á¹û
+Summary:è¾“å‡ºç»“æœ
 Return:None
 */
 void Array::ArrayOut()
 {
     int i;
-    //Êä³öÔ­Ê¼Êı¾İ
-    cout << "Ô­Ê¼Êı¾İÎª£º" << endl;
+    //è¾“å‡ºåŸå§‹æ•°æ®
+    cout << "åŸå§‹æ•°æ®ä¸ºï¼š" << endl;
     for (i = 0; i < ArrayLength; i++)
         cout << OriginalArray[i] << " ";
     cout << endl;
-    //Êä³ö×î´óÖµ¼°ÆäÎ»ÖÃ
-    cout << "×î´óÖµÎª£º" << ArrayMax << "; Î»ÖÃÎª:" << ArrayMaxLocation + 1 << endl;
-    //Êä³öµİÔöĞòÁĞ
-    cout << "ÓÉĞ¡µ½´óÅÅĞòÎª£º" << endl;
+    //è¾“å‡ºæœ€å¤§å€¼åŠå…¶ä½ç½®
+    cout << "æœ€å¤§å€¼ä¸ºï¼š" << ArrayMax << "; ä½ç½®ä¸º:" << ArrayMaxLocation + 1 << endl;
+    //è¾“å‡ºé€’å¢åºåˆ—
+    cout << "ç”±å°åˆ°å¤§æ’åºä¸ºï¼š" << endl;
     for (i = 0; i < ArrayLength; i++)
         cout << OrderedArray[i] << " ";
     cout << endl
@@ -157,14 +157,14 @@ void Array::ArrayOut()
 
 int main()
 {
-    //¶¨Òå¶ÔÏóÊ±¸³³õÖµ
+    //å®šä¹‰å¯¹è±¡æ—¶èµ‹åˆå€¼
     int a[] = {11, 12, 13, 1, 2, 3, -999};
     Array A(a);
     A.PickMax(a);
     A.Rank(a);
     A.ArrayOut();
 
-    //µ÷ÓÃ³ÉÔ±º¯Êı¸³Öµ
+    //è°ƒç”¨æˆå‘˜å‡½æ•°èµ‹å€¼
     Array B;
     int *b = B.ArrayIn();
     B.PickMax(b);
