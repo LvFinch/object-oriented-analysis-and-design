@@ -1,14 +1,13 @@
 /*
  * @Author : Akko
  * @Date : 2020-06-14 13:09:27
- * @LastEditTime : 2020-06-14 15:01:46
+ * @LastEditTime : 2020-06-14 17:17:36
  * @LastEditors : Akko
  * @Description : 客户数据管理：客户信息输入，输出。
  * @FilePath : \object-oriented analysis and design\Lab2\Inheritance.cpp
  * @Copyright ? 2020 Akko All rights reserved.
 */
 #include <iostream>
-#include <string>
 
 using namespace std;
 
@@ -28,9 +27,9 @@ class -- Customer
 class Customer
 {
 public:
-    char Cust_ID[10];   //客户编号
-    char Cust_Name[10]; //客户姓名
-    char Desc[MAXSIZE]; //备注
+    string Cust_ID;   //客户编号
+    string Cust_Name; //客户姓名
+    string Desc; //备注
 
 public:
     Customer();
@@ -52,8 +51,8 @@ class -- Corp_Cust
 class Corp_Cust : public Customer
 {
 public:
-    char Off_Price[5];  //折扣价
-    char Trust_Leve[3]; //信用等级
+    string Off_Price;  //折扣价
+    string Trust_Leve; //信用等级
 
 public:
     Corp_Cust();
@@ -123,8 +122,8 @@ class -- Vip_Cust
 class Vip_cust : public Customer
 {
 public:
-    char Phone[11];   //电话号码
-    char Vip_Leve[3]; //VIP等级
+    string Phone;   //电话号码
+    string Vip_Leve; //VIP等级
 
 public:
     Vip_cust();
