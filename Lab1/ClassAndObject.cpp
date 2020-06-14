@@ -1,7 +1,7 @@
 /*
  * @Author : Akko
  * @Date : 2020-06-14 12:49:21
- * @LastEditTime : 2020-06-14 15:32:38
+ * @LastEditTime : 2020-06-14 15:45:42
  * @LastEditors : Akko
  * @Description : 找出一个整型数组中的元素的最大值，并对数组进行排序。
  * @FilePath : \object-oriented analysis and design\Lab1\ClassAndObject.cpp
@@ -33,15 +33,13 @@ private:
     int ArrayLength;            //数组的长度
 public:
     Array(){};             //构造函数:无参
+    ~Array() {}            //析构函数
     Array(int a[]);        //构造函数:自定义
     int *ArrayIn();        //原始数据输入
     void PickMax(int a[]); //求最大值及其所在位置
     void Rank(int a[]);    //冒泡法排序
     void ArrayOut();       //结果输出
-    ~Array() {}            //析构函数
 };
-/* class -- Array*/
-
 /*
 Type:None
 Name:Array()
