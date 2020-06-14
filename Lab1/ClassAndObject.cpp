@@ -1,18 +1,19 @@
 /*
  * @Author : Akko
  * @Date : 2020-06-14 12:49:21
- * @LastEditTime : 2020-06-14 15:45:42
+ * @LastEditTime : 2020-06-14 16:58:27
  * @LastEditors : Akko
  * @Description : 找出一个整型数组中的元素的最大值，并对数组进行排序。
  * @FilePath : \object-oriented analysis and design\Lab1\ClassAndObject.cpp
- * @Copyright  ? 2020 Akko All rights reserved.
+ * @Copyright © 2020 Akko All rights reserved.
 */
 #include <iostream>
 using namespace std;
 
 #define MAXSIZE 50
 /*
-class -- Array
+class -- Customer
+========================================
 (1)数据成员包含：
     两个数组，一个用于保存原始数据，另一个则用于保存有序的数据（递增或递减自定）;
     一个用于存放最大值的数据成员;一个用于存放最大值所在数组中的位置的数据成员;
@@ -22,6 +23,7 @@ class -- Array
     最后一个用于结果的输出;
 (3)定义构造函数完成初始化工作，允许用户定义对象时给对象赋初值，定义析构函数;
 (4)定义对象，通过对象完成所有操作.
+========================================
 */
 class Array
 {
@@ -41,40 +43,44 @@ public:
     void ArrayOut();       //结果输出
 };
 /*
+-------------------------------
 Type:None
 Name:Array()
 Parameter:int
 Summary:用构造函数赋值
 Return:None
+-------------------------------
 */
 Array::Array(int a[])
 {
     int i;
-    cout << "——由用户定义对象时赋值——" << endl;
+    cout << "=====用户定义对象时赋值=====" << endl;
     for (i = 0; i < MAXSIZE; i++)
     {
         OriginalArray[i] = a[i];
-        if (a[i] == -999)
-            break; //数组以-999结束
+        if (a[i] == -9999)
+            break; //数组以-9999结束
     }
     ArrayLength = i;
 }
 /*
+-------------------------------
 Type:int
 Name:ArrayIn()
 Parameter:None
 Summary:用成员函数赋值
 Return:OriginalArray
+-------------------------------
 */
 int *Array::ArrayIn()
 {
-    cout << "——由成员函数动态赋值——" << endl;
+    cout << "=====成员函数动态赋值=====" << endl;
     int a, i;
-    cout << "请输入一组数据，由-999结束：" << endl;
+    cout << "请输入一组数据，由-9999结束：" << endl;
     for (i = 0; i <= 50; i++)
     {
         cin >> a;
-        if (a == -999)
+        if (a == -9999)
             break;
         else
             OriginalArray[i] = a;
@@ -83,11 +89,13 @@ int *Array::ArrayIn()
     return OriginalArray;
 }
 /*
+-------------------------------
 Type:void
 Name:PickMax()
 Parameter:int
 Summary:选出最大值
 Return:None
+-------------------------------
 */
 void Array::PickMax(int OriginalArray[])
 {
@@ -104,11 +112,13 @@ void Array::PickMax(int OriginalArray[])
     }
 }
 /*
+-------------------------------
 Type:void
 Name:Rank()
 Parameter:int
 Summary:排序
 Return:None
+-------------------------------
 */
 void Array::Rank(int OriginalArray[])
 {
@@ -129,23 +139,26 @@ void Array::Rank(int OriginalArray[])
     }
 }
 /*
+-------------------------------
 Type:void
 Name:ArrayOut
 Parameter:None
 Summary:输出结果
 Return:None
+-------------------------------
 */
 void Array::ArrayOut()
 {
     int i;
-    //输出原始数据
-    cout << "原始数据为：" << endl;
+    cout << endl
+         << "原始数组为：" << endl;
     for (i = 0; i < ArrayLength; i++)
-        cout << OriginalArray[i] << " ";
-    cout << endl;
-    //输出最大值及其位置
-    cout << "最大值为：" << ArrayMax << "; 位置为:" << ArrayMaxLocation + 1 << endl;
-    //输出递增序列
+        cout << OriginalArray[i] << ",";
+    cout << endl
+         << endl;
+    cout << "最大值为：" << ArrayMax << endl
+         << "其位置为:" << ArrayMaxLocation + 1 << endl
+         << endl;
     cout << "由小到大排序为：" << endl;
     for (i = 0; i < ArrayLength; i++)
         cout << OrderedArray[i] << " ";
@@ -155,14 +168,11 @@ void Array::ArrayOut()
 
 int main()
 {
-    //定义对象时赋初值
-    int a[] = {11, 12, 13, 1, 2, 3, -999};
+    int a[] = {-9, -99, 0, 66, 11, 27, -9999};
     Array A(a);
     A.PickMax(a);
     A.Rank(a);
     A.ArrayOut();
-
-    //调用成员函数赋值
     Array B;
     int *b = B.ArrayIn();
     B.PickMax(b);
