@@ -1,112 +1,186 @@
 /*
  * @Author : Akko
  * @Date : 2020-06-14 13:09:27
- * @LastEditTime : 2020-06-14 14:13:41
+ * @LastEditTime : 2020-06-14 15:01:46
  * @LastEditors : Akko
- * @Description : å®¢æˆ·æ•°æ®ç®¡ç†ï¼šå®¢æˆ·ä¿¡æ¯è¾“å…¥ï¼Œè¾“å‡ºã€‚
+ * @Description : ¿Í»§Êı¾İ¹ÜÀí£º¿Í»§ĞÅÏ¢ÊäÈë£¬Êä³ö¡£
  * @FilePath : \object-oriented analysis and design\Lab2\Inheritance.cpp
- * @Copyright Â© 2020 Akko All rights reserved.
+ * @Copyright ? 2020 Akko All rights reserved.
 */
 #include <iostream>
 #include <string>
 
 using namespace std;
+
+#define MAXSIZE 50
 /*
 class -- Customer
-æˆå‘˜:
-    å®¢æˆ·ç¼–å·
-    å®¢æˆ·å§“å
-    å¤‡æ³¨
-æˆå‘˜å‡½æ•°:
+===============================
+³ÉÔ±:
+    ¿Í»§±àºÅ
+    ¿Í»§ĞÕÃû
+    ±¸×¢
+³ÉÔ±º¯Êı:
     read();
     show();
+===============================
 */
 class Customer
 {
-private:
-    string Cust_ID;   //å®¢æˆ·ç¼–å·
-    string Cust_Name; //å®¢æˆ·å§“å
-    string Desc;      //å¤‡æ³¨
+public:
+    char Cust_ID[10];   //¿Í»§±àºÅ
+    char Cust_Name[10]; //¿Í»§ĞÕÃû
+    char Desc[MAXSIZE]; //±¸×¢
 
 public:
     Customer();
     ~Customer();
-    void read(); //èµ‹å€¼
-    void show(); //è¾“å‡º
+    void read(); //¸³Öµ
+    void show(); //Êä³ö
 };
-//class -- Customer
 Customer::Customer() {}
 
 Customer::~Customer() {}
-/* class -- Customer */
 /*
+===============================
 class -- Corp_Cust
-æˆå‘˜:
-    æŠ˜æ‰£ä»·
-    ä¿¡ç”¨ç­‰çº§
+³ÉÔ±:
+    ÕÛ¿Û¼Û
+    ĞÅÓÃµÈ¼¶
+===============================
 */
 class Corp_Cust : public Customer
 {
-private:
-    string Off_Price;   //æŠ˜æ‰£ä»·
-    string Trust_Level; //ä¿¡ç”¨ç­‰çº§
+public:
+    char Off_Price[5];  //ÕÛ¿Û¼Û
+    char Trust_Leve[3]; //ĞÅÓÃµÈ¼¶
 
 public:
     Corp_Cust();
     ~Corp_Cust();
+    void read(); //¸³Öµ
+    void show(); //Êä³ö
 };
-//class -- Corp_Cust
 Corp_Cust::Corp_Cust() {}
 
 Corp_Cust::~Corp_Cust() {}
+
 /*
 -------------------------------
-Type:None
+Type:void
 Name:read()
 Parameter:None
-Summary:èµ‹å€¼
+Summary:¸³Öµ
 Return:None
 -------------------------------
 */
-Corp_Cust::read()
+void Corp_Cust::read()
 {
-    cout << "è¯·è¾“å…¥å®¢æˆ·ç¼–å· : " << endl;
+    cout << "========ĞÅÏ¢ÊäÈë========" << endl;
+    cout << "ÇëÊäÈë¿Í»§±àºÅ : " << endl;
     cin >> Cust_ID;
-    cout << "è¯·è¾“å…¥å®¢æˆ·å§“å : " << endl;
+    cout << "ÇëÊäÈë¿Í»§ĞÕÃû : " << endl;
     cin >> Cust_Name;
-    cout << "è¯·è¾“å…¥å®¢æˆ·å¤‡æ³¨ : " << endl;
+    cout << "ÇëÊäÈë¿Í»§±¸×¢ : " << endl;
     cin >> Desc;
-    cout << "è¯·è¾“å…¥æŠ˜æ‰£ä»· : " << endl;
+    cout << "ÇëÊäÈëÕÛ¿Û¼Û : " << endl;
     cin >> Off_Price;
-    cout << "è¯·è¾“å…¥ä¿¡ç”¨ç­‰çº§ : " << endl;
-    cin >> Trust_Level;
+    cout << "ÇëÊäÈëĞÅÓÃµÈ¼¶ : " << endl;
+    cin >> Trust_Leve;
+    cout << "========ÊäÈë½áÊø========" << endl
+         << endl;
 }
+
 /*
 -------------------------------
-Type:None
+Type:void
 Name:show()
 Parameter:None
-Summary:è¾“å‡º
+Summary:Êä³ö
 Return:None
 -------------------------------
 */
+void Corp_Cust::show()
+{
+    cout << "--------ĞÅÏ¢Êä³ö--------" << endl;
+    cout << "¿Í»§±àºÅ : " << Cust_ID << endl;
+    cout << "¿Í»§ĞÕÃû : " << Cust_Name << endl;
+    cout << "¿Í»§±¸×¢ : " << Desc << endl;
+    cout << "ÕÛ¿Û¼Û : " << Off_Price << endl;
+    cout << "ĞÅÓÃµÈ¼¶ : " << Trust_Leve << endl;
+    cout << "--------Êä³ö½áÊø--------" << endl
+         << endl;
+}
+
 /*
+===============================
 class -- Vip_Cust
-æˆå‘˜:
-    ç”µè¯å·ç 
-    VIPç­‰çº§
+³ÉÔ±:
+    µç»°ºÅÂë
+    VIPµÈ¼¶
+===============================
 */
 class Vip_cust : public Customer
 {
-private:
-    string Phone;   //ç”µè¯å·ç 
-    string VipLeve; //VIPç­‰çº§
+public:
+    char Phone[11];   //µç»°ºÅÂë
+    char Vip_Leve[3]; //VIPµÈ¼¶
 
 public:
     Vip_cust();
     ~Vip_cust();
+    void read(); //¸³Öµ
+    void show(); //Êä³ö
 };
-//class -- Vip_Cust
 Vip_cust::Vip_cust() {}
 
 Vip_cust::~Vip_cust() {}
+
+/*
+-------------------------------
+Type:void
+Name:read()
+Parameter:None
+Summary:Êä³ö
+Return:None
+-------------------------------
+*/
+void Vip_cust::read()
+{
+    cout << "========ĞÅÏ¢ÊäÈë========" << endl;
+    cout << "ÇëÊäÈëµç»°ºÅÂë£º" << endl;
+    cin >> Phone;
+    cout << "ÇëÊäÈëVIPµÈ¼¶£º" << endl;
+    cin >> Vip_Leve;
+    cout << "========ÊäÈë½áÊø========" << endl
+         << endl;
+};
+
+/*
+-------------------------------
+Type:void
+Name:show()
+Parameter:None
+Summary:Êä³ö
+Return:None
+-------------------------------
+*/
+void Vip_cust::show()
+{
+    cout << "--------ĞÅÏ¢Êä³ö--------" << endl;
+    cout << "µç»°ºÅÂë£º" << Phone << endl;
+    cout << "VIPµÈ¼¶£º" << Vip_Leve << endl;
+    cout << "--------Êä³ö½áÊø--------" << endl
+         << endl;
+};
+
+int main()
+{
+    Corp_Cust A;
+    Vip_cust B;
+    A.read();
+    A.show();
+    B.read();
+    B.show();
+    return 0;
+}
